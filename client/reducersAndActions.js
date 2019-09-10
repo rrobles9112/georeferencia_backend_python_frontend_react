@@ -93,7 +93,7 @@ function fetchPosts(payload){
     dispatch(changeLoading(true));
 
 
-    return fetch(`https://127.0.0.1:3000/visitas/municipio`,{
+    return fetch(`https://172.25.2.13:3000/visitas/municipio`,{
       method:'POST',
       headers:{
         'Accept': 'application/json',
