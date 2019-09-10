@@ -95,4 +95,4 @@ context = ssl.create_default_context(purpose=ssl.Purpose.CLIENT_AUTH)
 context.load_cert_chain("/etc/httpd/ssl/saludfamiliar.co.crt", keyfile="/etc/httpd/ssl/saludfamiliar.co.key")
 
 if __name__ == "__main__":
-    app.run(host="saludfamiliar.co", port=3000, ssl=context)
+    app.run(host="0.0.0.0", port=3000, ssl=context)
