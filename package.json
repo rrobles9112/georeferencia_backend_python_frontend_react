@@ -1,0 +1,50 @@
+{
+  "name": "tutorial-react-parcel-express",
+  "version": "1.0.0",
+  "description": "A tiny getting started for a react project, with front-end built with parcel, and served through express.",
+  "main": "index.js",
+  "scripts": {
+    "build-watch": "parcel watch ./client/index.html --no-hmr",
+    "start-watch": "python3 main.py",
+    "dev": "concurrently --kill-others \"npm run start-watch\" \"npm run build-watch\"",
+    "dev-alt": "npm run start-watch && npm run build-watch",
+    "build": "parcel build ./client/index.html",
+    "start": "npm run build && node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tutorial",
+    "react",
+    "parcel",
+    "express"
+  ],
+  "author": "witchard",
+  "license": "MIT",
+  "repository": "github:witchard/tutorial-react-parcel-express",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@types/express": "^4.17.1",
+    "@types/node": "^12.7.2",
+    "babel-plugin-import": "latest",
+    "babel-plugin-transform-runtime": "latest",
+    "babel-preset-env": "latest",
+    "babel-preset-es2015": "latest",
+    "babel-preset-react": "latest",
+    "babel-preset-stage-0": "latest",
+    "concurrently": "^4.1.2",
+    "less": "^3.9.0",
+    "parcel-bundler": "^1.12.3",
+    "redux-devtools-extension": "^2.13.8"
+  },
+  "dependencies": {
+    "antd": "^3.22.2",
+    "google-maps-api-loader": "^1.1.1",
+    "query-string": "6.8.2",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
+  }
+}
