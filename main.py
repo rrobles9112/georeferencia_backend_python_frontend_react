@@ -7,7 +7,6 @@ import ssl
 
 import time
 
-gc.freeze()
 
 app = Sanic()
 
