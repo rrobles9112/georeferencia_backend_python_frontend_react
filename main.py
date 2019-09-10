@@ -93,7 +93,7 @@ async def dptos_handler(request):
 
 
 context = ssl.create_default_context(purpose=ssl.Purpose.CLIENT_AUTH)
-context.load_cert_chain("/opt/lampp/etc/ssl.crt/server.crt", keyfile="/opt/lampp/etc/ssl.key/server.key")
+context.load_cert_chain("/etc/httpd/ssl/saludfamiliar.co.crt", keyfile="/etc/httpd/ssl/saludfamiliar.co.key")
 
 if __name__ == "__main__":
     app.run(host="172.25.2.13", port=3000, ssl=context)
