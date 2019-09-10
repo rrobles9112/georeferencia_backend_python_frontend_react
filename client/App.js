@@ -38,7 +38,7 @@ const App = () => {
     const [dptos, setDptos] = useState([]);
     const [mun, setMum] = useState(1);
     const [dp, setDP] = useState("13");
-//3.436865, -76.524991
+    // 3.436865, -76.524991
     const [markersData, setMarkersData] = useState([
         {latlng: {lat: 10.399890, lng: -75.501829}, title: 1, dpto: 13},
         {latlng: {lat: 3.436865, lng: -76.524991}, title: 1, dpto: 76}
