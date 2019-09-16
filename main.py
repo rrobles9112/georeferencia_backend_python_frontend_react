@@ -11,13 +11,16 @@ gc.freeze()
 
 app = Sanic()
 
+
+
 conn_str='database=SIGRI;hostname=172.25.2.10;port=50000;protocol=tcpip;uid=salfamws;pwd=Us3rWebs#19;SCHEMA=SALUD'
 conn = ibm_db.pconnect(conn_str,'','')
 
 BASE = os.getcwd()
 app.static('/', './dist')
-#app.static('/main.js', './dist/main.js', name='main.js')
+#app.static('/circle_red.svg', './dist/circle_red.svg', name='circle_red.svg')
 
+app.static('/the_best.png', '/home/ubuntu/test.png', name='best_png')
 
 @app.route('/')
 async def index(request):
@@ -31,7 +34,7 @@ async def filter_handler(request):
     dpto = body_json['dpto']
     promotor = body_json['promotor']
     where = ''
-    if(promotor):
+    if(promotor or promotor != ''):
         where= "AND GEO.PROMOTOR = ?"
         params = dpto, promotor
 
@@ -54,6 +57,7 @@ async def filter_handler(request):
 
     return json(result)
 
+
 @app.post("/visitas/promotores")
 async def promotores_handler(request):
     body_json_promotor = request.json
@@ -71,8 +75,10 @@ async def promotores_handler(request):
         result.append(dictionary)
 
     print("--- %s seconds ---" % (time.time() - start_time))
-
     return json(result)
+
+
+
 
 @app.route("/dptos")
 async def dptos_handler(request):

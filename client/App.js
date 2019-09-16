@@ -32,7 +32,7 @@ const App = () => {
     const [municipios, setMunicipios] = useState([]);
     const [promotores, setPromotores] = useState([]);
     const [optionPromotorSelected, setOptionPromotorSelected] = useState('');
-    const [promotor, setPromotor] = useState([]);
+    const [promotor, setPromotor] = useState('');
     const [queryString, setQueryString] = useState({});
     const [visitas, setVisita] = useState([]);
     const [dptos, setDptos] = useState([]);
@@ -47,6 +47,7 @@ const App = () => {
     const createGPX = () => {
 
         (async () => {
+
             dispatch(fetchPosts({mun: mun, dp: dp, promotor:promotor, filter: queryString}));
         })();
 
@@ -122,17 +123,17 @@ const App = () => {
 
                                 </Col>
                                 {/*<Col xs={24} md={12}>
-              <Form.Item label="Municipio">
-                <select size={`large`} aria-readonly={true} disabled={true} className='ant-select-custom' style={{ width: '100%' }} placeholder={`Seleccione el municipio`} onChange={(e) => {
-                  let val = parseInt(e.target.value);
-                  setMum(val);
-                }}>
-                  {municipios && municipios.map((v, k) => {
-                    return (<option key={`municipio_${k}_${v.CODIGO}_${v.ID_DPTO}`} value={v.CODIGO}>{v.NOMBRE}</option>)
-                  })}
-                </select>
-              </Form.Item>
-            </Col>*/}
+                                      <Form.Item label="Municipio">
+                                        <select size={`large`} aria-readonly={true} disabled={true} className='ant-select-custom' style={{ width: '100%' }} placeholder={`Seleccione el municipio`} onChange={(e) => {
+                                          let val = parseInt(e.target.value);
+                                          setMum(val);
+                                        }}>
+                                          {municipios && municipios.map((v, k) => {
+                                            return (<option key={`municipio_${k}_${v.CODIGO}_${v.ID_DPTO}`} value={v.CODIGO}>{v.NOMBRE}</option>)
+                                          })}
+                                        </select>
+                                      </Form.Item>
+                                   </Col>*/}
                                 <Col xs={12} md={12}>
                                     <Form.Item label="Promotores">
                                         <Select size={`large`} aria-readonly={true} disabled={false}
@@ -142,6 +143,7 @@ const App = () => {
                                             setPromotor(val);
                                             setOptionPromotorSelected(val);
                                         }}>
+                                            <Option key={`promotor_key_long`} value={''}>Seleccione un promotor</Option>
                                             {promotores && promotores.map((v, k) => {
                                                 return (<Option key={`promotor_${k}_${v.ID}_${v.NOMBRES}`}
                                                                 value={v.ID}>{v.NOMBRES}</Option>)

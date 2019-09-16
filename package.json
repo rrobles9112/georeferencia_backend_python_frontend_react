@@ -4,7 +4,7 @@
   "description": "A tiny getting started for a react project, with front-end built with parcel, and served through express.",
   "main": "index.js",
   "scripts": {
-    "build-watch": "parcel watch ./client/index.html --no-hmr",
+    "build-watch": "parcel watch ./client/index.html",
     "start-watch": "python3 main.py",
     "dev": "concurrently --kill-others \"npm run start-watch\" \"npm run build-watch\"",
     "dev-alt": "npm run start-watch && npm run build-watch",

@@ -91,28 +91,36 @@ const useMap = ({googleMap, mapContainerRef, initialConfig, visitas}) => {
 
             visitas.forEach(({latlng, direccion, rcv, gestante, cancer}, k) => {
                              console.log('markers=',latlng, direccion, rcv, gestante, cancer);
+                            
                             let icon = {
-                                url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png", // url
-                                scaledSize: new google.maps.Size(12, 12), // scaled size
-                                origin: new google.maps.Point(0, 0), // origin
+                                scaledSize: new google.maps.Size(8, 8), // scaled size
+                                origin: new google.maps.Point(0,0), // origin
                                 anchor: new google.maps.Point(0, 0) // anchor
                             };
+                            let riesgo = ''
+
+                            if (rcv == "1") {
+                                riesgo = 'RCV';
+                                icon.url = "https://127.0.0.1:3000/circle_red.svg";
+                            } else if (gestante == "1") {
+                                riesgo = 'GESTANTE';
+                                icon.url = "https://127.0.0.1:3000/circle_green.svg";
+                            } else if (cancer == "1") {
+                                riesgo = 'CANCER';
+                                icon.url = "https://127.0.0.1:3000/circle_orange.svg";
+                            }else{
+                                riesgo = 'NO TIENE';
+                                icon.url = "https://127.0.0.1:3000/circle_black.svg";
+                            }
+
+
                             const marker = new googleMap.maps.Marker({
                                 position: latlng,
                                 icon: icon,
                                 map: map
                             });
-                            let riesgo = ''
 
-                            if (rcv == "1") {
-                                riesgo = 'RCV';
-                            } else if (gestante == "1") {
-                                riesgo = 'GESTANTE';
-                            } else if (cancer == "1") {
-                                riesgo = 'CANCER';
-                            }else{
-                                riesgo = 'NO TIENE';
-                            }
+                            
 
                             const InfoWindow = new googleMap.maps.InfoWindow({
                                 content: `<div id="content">
