@@ -28,11 +28,39 @@
 }
 
 .map-container{
-  width: 70%;
-  height: 500px;
+  width: 85%;
+  height: 80vh;
   margin: 0 auto;
 }
 
 #map{
-  height: 500px!important;
+  height: 640px!important;
+  position: relative;
+}
+
+#info-riesgo{
+
+    display: none;
+    background-color: white;
+    border: 1px solid black;
+    bottom: 30px;
+    height: auto;
+    padding: 10px;
+    position: absolute;
+    left: 30px;
+    width: 30%;
+    z-index: 9999;
+
+}
+
+#panel-info h2 {
+    font-size: 14px;
+}
+
+dd, dt{
+    font-size: 12px;
+}
+
+dt{
+    line-height: 1rem;
 }
