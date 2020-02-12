@@ -178,17 +178,34 @@ const useMapWithHeatMap = ({googleMap, mapContainerRef, initialConfig, visitas})
             const geocoder = new googleMap.maps.Geocoder();
 
             ipss.forEach(item=>{
-                 console.log('Geocode', item.DIRECCION && item.DIRECCION);
+                 console.log('Geocode',item && item, item.DIRECCION && item.DIRECCION, `${item.DIRECCION}, ${item.MUNICIPIO}, ${item.SURCURSAL}`);
                 geocoder.geocode({'address': item.DIRECCION && item.DIRECCION}, function (results, status) {
 
                 if (status === 'OK') {
                     console.log('Geocode', results, status);
                     /*resultsMap.setCenter(results[0].geometry.location);*/
 
-                    var marker = new google.maps.Marker({
+                    /*var marker = new google.maps.Marker({
                         map: map,
                         position: results[0].geometry.location
                     });
+
+                    const InfoWindow = new googleMap.maps.InfoWindow({
+                    content: `<div id="content">
+                                    
+                                    <p><b>Ips: </b>${item && item.NOMBRE && item.NOMBRE}</p>
+                                    <p><b>Sucursal: </b>${item && item.SUCURSAL && item.SUCURSAL}</p>
+                              
+                              </div>`
+                     });*/
+
+                // marker
+
+                marker.addListener("click", () => {
+                    InfoWindow.open(map, marker);
+                });
+
+
                 } else {
                     console.warn('Geocode was not successful for the following reason: ' + status);
                 }
