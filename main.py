@@ -5,12 +5,12 @@ import gc
 import os
 import ssl
 import json as json_std
-
 import time
-
 gc.freeze()
 
-app = Sanic()
+
+
+app = Sanic(name='Georeferenciacion')
 
 conn_str = 'database=SIGRI;hostname=172.25.2.10;port=50000;protocol=TCPIP;uid=salfamws;pwd=Us3rWebs#19;SCHEMA=SALUD'
 conn = ibm_db.pconnect(conn_str, '', '')
@@ -132,13 +132,13 @@ async def xlsx_handler(request):
     result = []
     with open("assets/data.json", "r", encoding='utf-8-sig') as f:
         data = json_std.load(f)
-
+        
     return json(data['Hoja1'])
 
 
 context = ssl._create_unverified_context(purpose=ssl.Purpose.CLIENT_AUTH)
-context.load_cert_chain("/home/richard/PycharmProjects/sanic_ws/cert.pem",
-                        keyfile="/home/richard/PycharmProjects/sanic_ws/key.pem")
+context.load_cert_chain("./cert.pem",
+                        keyfile="./key.pem")
 
 if __name__ == "__main__":
-    app.run(host="172.25.3.53", port=3000, ssl=context)
+    app.run(host="172.25.206.40", port=3000, ssl=context)

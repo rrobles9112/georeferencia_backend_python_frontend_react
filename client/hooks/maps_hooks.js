@@ -39,21 +39,22 @@ const useMap = ({googleMap, mapContainerRef, initialConfig, visitas}) => {
             };
 
 
-            const service = new googleMap.maps.places.PlacesService(map);
-            const geocoder = new googleMap.maps.Geocoder();
+            // const service = new googleMap.maps.places.PlacesService(map);
+            // const geocoder = new googleMap.maps.Geocoder();
 
-            geocoder.geocode({'address': 'Cartagena, Colombia'}, function ({results}, status) {
-                if (status === 'OK') {
-                    console.log('Geocode', results);
-                    /*resultsMap.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
-                        map: resultsMap,
-                        position: results[0].geometry.location
-                    });*/
-                } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
-                }
-            });
+            // geocoder.geocode({'address': 'Cartagena, Colombia'}, function ({results}, status) {
+            //     if (status === 'OK') {
+                    
+            //         console.log('Geocode', results);
+            //         /*resultsMap.setCenter(results[0].geometry.location);
+            //         var marker = new google.maps.Marker({
+            //             map: resultsMap,
+            //             position: results[0].geometry.location
+            //         });*/
+            //     } else {
+            //         alert('Geocode was not successful for the following reason: ' + status);
+            //     }
+            // });
 
             const getPoints = () => {
                 let points = [];
@@ -399,8 +400,10 @@ const useMapWithBounds = ({googleMap, mapContainerRef, initialConfig, visitas, r
             const data_layer_municipal = new google.maps.Data({map: map});
 
             data_layer_nacional.loadGeoJson(
-                'https://samplehosting-82d42.firebaseapp.com/nacional.geojson');
-
+                'https://geows-b73c0.web.app/nacional.geojson');
+            
+            
+            
 
             data_layer_nacional.setStyle({
                 fillColor: 'red',
@@ -411,7 +414,7 @@ const useMapWithBounds = ({googleMap, mapContainerRef, initialConfig, visitas, r
             });
 
             data_layer_departamental.loadGeoJson(
-                'https://samplehosting-82d42.firebaseapp.com/departamental.geojson');
+                'https://geows-b73c0.web.app/departamental.geojson');
 
             data_layer_departamental.setStyle({
                 fillColor: 'blue',
@@ -456,7 +459,7 @@ const useMapWithBounds = ({googleMap, mapContainerRef, initialConfig, visitas, r
 
 
             data_layer_municipal.loadGeoJson(
-                'https://samplehosting-82d42.firebaseapp.com/municipal.geojson');
+                'https://geows-b73c0.web.app/municipal.geojson');
 
             data_layer_municipal.setStyle({
                 fillColor: 'slateblue',
